@@ -7,7 +7,6 @@
     <v-col cols="4">Mac dinh</v-col>
   </v-row>
   <hr>
-
 </div>
 </template>
 
