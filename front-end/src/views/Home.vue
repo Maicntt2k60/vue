@@ -1,12 +1,37 @@
 <template>
   <div class="home">
-    <h1>Home is component</h1>
-    <div v-for="index in 4" :key="index">
-    <p v-if="index%2 ===0">So chan la:{{index}}</p>
-      <p v-else>So le la:{{index}}</p>
-    </div>
+    <v-row class="menu-option-main">
+      <v-col cols="2">
+        <v-btn depressed color="error" @click="changeOptionMenu">
+          Menu
+        </v-btn>
+      </v-col>
 
-    <div>{{msg}}</div>
+      <v-col cols="9">
+        <v-btn-toggle
+            v-model="menuGroupChoose"
+            tile
+            color="deep-purple accent-3"
+            group
+        >
+          <v-btn value="latest" depressed>
+            Latest
+          </v-btn>
+          <v-btn value="categories" depressed>
+            Categories
+          </v-btn>
+
+          <v-btn value="top" depressed>
+            Top
+          </v-btn>
+
+          <v-btn value="faq" depressed>
+            FAQ
+          </v-btn>
+        </v-btn-toggle>
+      </v-col>
+    </v-row>
+
   </div>
 </template>
 
@@ -14,14 +39,29 @@
 
 export default {
   name: 'Home',
-  components: {
-    
-  },
-  data(){
-    return{
-      msg:"On create"
+  components: {},
+  data() {
+    return {
+      msg: "On create",
+      menuGroupChoose:"latest"
     }
   },
+  methods:{
+    changeOptionMenu(){
+      if (this.menuGroupChoose === "top"){
+        this.menuGroupChoose="latest";
+      }
+      else{
+        this.menuGroupChoose = "top";
+      }
+
+    }
+  }
 
 }
 </script>
+<style scoped>
+.home {
+  /*display: flex;*/
+}
+</style>

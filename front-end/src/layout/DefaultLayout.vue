@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app>
-      <v-app-bar app>
+      <v-app-bar app class="header-menu">
         <header-default></header-default>
       </v-app-bar>
       <v-main>
@@ -24,5 +24,7 @@ export default {
 </script>
 
 <style scoped>
-
+.header-menu{
+  background-color: #3A3A3A !important;
+}
 </style>
