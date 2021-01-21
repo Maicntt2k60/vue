@@ -6,8 +6,7 @@
           Menu
         </v-btn>
       </v-col>
-
-      <v-col cols="9">
+      <v-col cols="10">
         <v-btn-toggle
             v-model="menuGroupChoose"
             tile
@@ -31,6 +30,10 @@
         </v-btn-toggle>
       </v-col>
     </v-row>
+    <hr>
+    <v-row>
+
+    </v-row>
 
   </div>
 </template>
@@ -43,15 +46,14 @@ export default {
   data() {
     return {
       msg: "On create",
-      menuGroupChoose:"latest"
+      menuGroupChoose: "latest"
     }
   },
-  methods:{
-    changeOptionMenu(){
-      if (this.menuGroupChoose === "top"){
-        this.menuGroupChoose="latest";
-      }
-      else{
+  methods: {
+    changeOptionMenu() {
+      if (this.menuGroupChoose === "top") {
+        this.menuGroupChoose = "latest";
+      } else {
         this.menuGroupChoose = "top";
       }
 
@@ -63,5 +65,9 @@ export default {
 <style scoped>
 .home {
   /*display: flex;*/
+}
+
+.menu-option-main {
+  margin-top: 1%;
 }
 </style>
