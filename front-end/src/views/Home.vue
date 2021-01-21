@@ -32,17 +32,35 @@
     </v-row>
     <hr>
     <v-row>
-
+      <v-col cols="9">
+        <h4>Topic</h4>
+      </v-col>
+      <v-col cols="1">
+        <h4>Replies</h4>
+      </v-col>
+      <v-col cols="1">
+        <h4>Views</h4>
+      </v-col>
+      <v-col cols="1">
+        <h4>
+          Activity
+        </h4>
+      </v-col>
     </v-row>
-
+    <hr>
+    <div class="list-item-post">
+      <ItemPostList v-for="data in 4" :key="data" :msg="data" :tt="msg"/>
+    </div>
   </div>
 </template>
 
 <script>
-
+import ItemPostList from "@/components/ItemPostList";
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    ItemPostList
+  },
   data() {
     return {
       msg: "On create",
@@ -68,6 +86,9 @@ export default {
 }
 
 .menu-option-main {
+  margin-top: 1%;
+}
+.list-item-post{
   margin-top: 1%;
 }
 </style>

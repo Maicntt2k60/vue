@@ -4,7 +4,7 @@
     <v-col cols="8">
       <h2>{{msg}}</h2>
     </v-col>
-    <v-col cols="4">Mac dinh</v-col>
+    <v-col cols="4">{{tt}}</v-col>
   </v-row>
   <hr>
 </div>
@@ -14,7 +14,8 @@
 export default {
   name: "ItemPostList",
   props:{
-    msg:String
+    msg:String,
+    tt:String
   }
 }
 </script>
