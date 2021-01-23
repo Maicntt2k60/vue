@@ -2,7 +2,7 @@
   <div class="login">
     <v-dialog
         @click:outside="clickOutsite"
-        v-model="openDialog"
+        v-model="openDialog.action"
         width="600"
     >
       <v-card>
@@ -30,27 +30,17 @@
 export default {
   name: "Login",
   props: {
-    openDialog: Boolean
+    openDialog: Object
   },
   data() {
     return {
-      dataOpen:true,
       userName:'',
       password:''
     }
   },
-  created() {
-    this.dataOpen = true;
-  },
-  destroyed() {
-    this.dataOpen=false;
-  },
-  mounted() {
-    this.dataOpen =false;
-  },
   methods:{
     clickOutsite(){
-      this.dataOpen = false;
+      this.openDialog.action = false;
     },
     loginEvent(){
       console.log(this.userName);

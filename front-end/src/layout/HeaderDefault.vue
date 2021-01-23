@@ -13,7 +13,7 @@
                color="error">
           LOGIN
         </v-btn>
-        <Login :open-dialog="login"/>
+        <Login :open-dialog.sync="loginOption"/>
         <v-btn class="btn-header-option"
                depressed
                color="error">
@@ -39,12 +39,12 @@ export default {
   },
   data() {
     return {
-      login:false
+      loginOption:{'action':false}
     }
   },
   methods:{
     openLogin(){
-      this.login=true;
+      this.loginOption.action= true;
     }
   }
 }
