@@ -1,0 +1,12 @@
+{
+  "key": {
+    "money": [1,1,2,3,3,4,5,5],
+    "price": 1,
+    "o": {}
+  },
+  "people": {
+    "age": 11,
+    "address": "abc",
+    "school": "GTVT"
+  }
+}

@@ -8,13 +8,15 @@
       <v-col cols="6" class="menu-option">
 
         <v-btn class="btn-header-option"
-            depressed
-            color="error">
+               depressed
+               @click="openLogin"
+               color="error">
           LOGIN
         </v-btn>
+        <Login :open-dialog="login"/>
         <v-btn class="btn-header-option"
-            depressed
-            color="error">
+               depressed
+               color="error">
           SIGN UP
         </v-btn>
         <v-btn class="btn-header-option"
@@ -28,10 +30,22 @@
 </template>
 
 <script>
+import Login from "@/components/Login";
+
 export default {
   name: "HeaderDefault",
+  components: {
+    Login
+  },
   data() {
-    return {}
+    return {
+      login:false
+    }
+  },
+  methods:{
+    openLogin(){
+      this.login=true;
+    }
   }
 }
 </script>
@@ -49,7 +63,8 @@ export default {
 .title-header {
   color: white;
 }
-.btn-header-option{
+
+.btn-header-option {
   float: right;
   margin-left: 2%;
   margin-top: 1%;

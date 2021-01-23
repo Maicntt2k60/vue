@@ -48,8 +48,14 @@
       </v-col>
     </v-row>
     <hr>
+    <v-overlay :value="loading">
+      <v-progress-circular
+          indeterminate
+          size="64"
+      ></v-progress-circular>
+    </v-overlay>
     <div class="list-item-post">
-      <ItemPostList v-for="data in 4" :key="data" :msg="data" :tt="msg"/>
+      <ItemPostList  v-for="data in dataPostList" :key="data.title" :data-object="data"/>
     </div>
   </div>
 </template>
@@ -64,8 +70,30 @@ export default {
   data() {
     return {
       msg: "On create",
-      menuGroupChoose: "latest"
+      menuGroupChoose: "latest",
+      dataPostList:[],
+      loading:false
     }
+  },
+  created() {
+    this.dataPostList.push({
+      "title":"bai 1",
+      "replies":100,
+      "views":200,
+      "activity":"1h"
+    });
+    this.dataPostList.push({
+      "title":"bai 2",
+      "replies":100,
+      "views":200,
+      "activity":"1h"
+    });
+    this.dataPostList.push({
+      "title":"bai 3",
+      "replies":100,
+      "views":200,
+      "activity":"1h"
+    });
   },
   methods: {
     changeOptionMenu() {
