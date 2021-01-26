@@ -16,11 +16,14 @@
         <Login :open-dialog.sync="loginOption"/>
         <v-btn class="btn-header-option"
                depressed
+               @click="openSignUp"
                color="error">
           SIGN UP
         </v-btn>
+        <SignUp :open-dialog.sync="signUpOption"/>
         <v-btn class="btn-header-option"
                icon
+
                color="white">
           ?
         </v-btn>
@@ -30,21 +33,26 @@
 </template>
 
 <script>
+import SignUp from "@/components/SignUp";
 import Login from "@/components/Login";
 
 export default {
   name: "HeaderDefault",
   components: {
-    Login
+    Login,SignUp
   },
   data() {
     return {
-      loginOption:{'action':false}
+      loginOption:{'action':false},
+      signUpOption:{'action':false}
     }
   },
   methods:{
     openLogin(){
       this.loginOption.action= true;
+    },
+    openSignUp(){
+      this.signUpOption.action= true;
     }
   }
 }
