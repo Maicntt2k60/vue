@@ -8,7 +8,6 @@
         <slot/>
       </v-main>
     </v-app>
-
   </div>
 </template>
 

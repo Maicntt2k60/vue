@@ -17,11 +17,11 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn depressed color="error" @click="loginEvent">Sign In</v-btn>
+          <v-btn depressed color="error" @click="registerEvent">Sign In</v-btn>
           <v-btn depressed color="error">Cancel</v-btn>
         </v-card-actions>
       </v-card>
-
+      <v-btn depressed color="error" @click="loginEvent">Go to Login</v-btn>
     </v-dialog>
   </div>
 </template>
@@ -30,7 +30,8 @@
 export default {
   name: "SignUp",
   props: {
-    openDialog: Object
+    openDialog: Object,
+    closeDialog: Object
   },
   data() {
     return {
@@ -42,9 +43,13 @@ export default {
     clickOutsite() {
       this.openDialog.action = false;
     },
-    loginEvent() {
+    registerEvent() {
       console.log(this.userName);
       console.log(this.password);
+    },
+    loginEvent(){
+      this.openDialog.action = false;
+      this.closeDialog.action = true;
     }
   }
 }

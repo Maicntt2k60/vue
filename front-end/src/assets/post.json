@@ -1,0 +1,22 @@
+{
+  "id": "",
+  "title": "title",
+  "dateCreated": "title",
+  "userCreated": "title",
+  "comment": [
+    {
+      "idComment": "1",
+      "contentComment": "",
+      "userComment": "",
+      "quotePost": true,
+      "quoteComment": "",
+      "dateCreated": ""
+    }
+  ],
+  "favourite": [
+    {
+      "user": "",
+      "dateFv": ""
+    }
+  ]
+}

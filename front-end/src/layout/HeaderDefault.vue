@@ -11,16 +11,20 @@
                depressed
                @click="openLogin"
                color="error">
+          <v-icon dark>
+            mdi-tag-outline
+          </v-icon>
+
           LOGIN
         </v-btn>
-        <Login :open-dialog.sync="loginOption"/>
+        <Login :open-dialog.sync="loginOption" :close-dialog="signUpOption" :loading-to-login.sync="loadingToLogin"/>
         <v-btn class="btn-header-option"
                depressed
                @click="openSignUp"
                color="error">
           SIGN UP
         </v-btn>
-        <SignUp :open-dialog.sync="signUpOption"/>
+        <SignUp :open-dialog.sync="signUpOption" :close-dialog="loginOption"/>
         <v-btn class="btn-header-option"
                icon
 
@@ -44,7 +48,8 @@ export default {
   data() {
     return {
       loginOption:{'action':false},
-      signUpOption:{'action':false}
+      signUpOption:{'action':false},
+      loadingToLogin:{'action':false}
     }
   },
   methods:{
@@ -52,7 +57,8 @@ export default {
       this.loginOption.action= true;
     },
     openSignUp(){
-      this.signUpOption.action= true;
+      this.loginOption.action = false;
+      this.signUpOption.action = true;
     }
   }
 }
