@@ -27,7 +27,7 @@
         <SignUp :open-dialog.sync="signUpOption" :close-dialog="loginOption"/>
         <v-btn class="btn-header-option"
                icon
-
+               @click="jqueryExample"
                color="white">
           ?
         </v-btn>
@@ -37,28 +37,33 @@
 </template>
 
 <script>
-import SignUp from "@/components/SignUp";
-import Login from "@/components/Login";
+import SignUp from "@/components/login/SignUp";
+import Login from "@/components/login/Login";
+import $ from 'jquery';
 
 export default {
   name: "HeaderDefault",
   components: {
-    Login,SignUp
+    Login, SignUp
   },
   data() {
     return {
-      loginOption:{'action':false},
-      signUpOption:{'action':false},
-      loadingToLogin:{'action':false}
+      loginOption: {'action': false},
+      signUpOption: {'action': false},
+      loadingToLogin: {'action': false}
     }
   },
-  methods:{
-    openLogin(){
-      this.loginOption.action= true;
+  methods: {
+    openLogin() {
+      this.loginOption.action = true;
     },
-    openSignUp(){
+    openSignUp() {
       this.loginOption.action = false;
       this.signUpOption.action = true;
+    },
+    jqueryExample() {
+
+      console.log($('.item-post-list .title-object').text())
     }
   }
 }
