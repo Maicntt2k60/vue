@@ -12,7 +12,9 @@ public class PostDTO {
     private String userCreate;
     private Integer action;
     private String subject;
-//    @Nullable
+    private String title;
+    //    @Nullable
     private List<String> hashTag;
     private String content;
+    private SubjectDTO subjectDTO;
 }

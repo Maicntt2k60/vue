@@ -25,6 +25,9 @@ public class PostEntity {
     private String userOwn;
     @Field(name = "subject")
     private String subjectId;
+    @Field("title")
+    @NonNull
+    private String title;
     @Field("comment")
     @Nullable
     @ElementCollection
@@ -47,11 +50,13 @@ public class PostEntity {
         private String content;
         @Field(name = "action")
         private Integer action;
-        public ContentPostEntity(){
+
+        public ContentPostEntity() {
 
         }
     }
-    public PostEntity(){
+
+    public PostEntity() {
 
     }
 

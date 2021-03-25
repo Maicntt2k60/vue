@@ -55,13 +55,28 @@
       ></v-progress-circular>
     </v-overlay>
     <div class="list-item-post">
-      <ItemPostList  v-for="data in dataPostList" :key="data.title" :data-object="data"/>
+      <item-post-list v-for="data in dataPostList" :key="data.id" :data-item-post="data"/>
+    </div>
+    <div class="pagination">
+      <div class="text-center">
+        <v-pagination
+            v-model="page"
+            :length="2"
+            @input="nextPage"
+            @previous="nextPage"
+            @next="nextPage"
+            circle
+        ></v-pagination>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ItemPostList from "@/components/ItemPostList";
+import ItemPostList from "@/components/post/ItemPostList";
+import axios from "axios";
+import api from "@/config/api";
+
 export default {
   name: 'Home',
   components: {
@@ -71,29 +86,23 @@ export default {
     return {
       msg: "On create",
       menuGroupChoose: "latest",
-      dataPostList:[],
-      loading:false
+      dataPostList: [],
+      loading: false,
+      page: 1
     }
   },
-  created() {
-    this.dataPostList.push({
-      "title":"bai 1",
-      "replies":100,
-      "views":200,
-      "activity":"1h"
-    });
-    this.dataPostList.push({
-      "title":"bai 2",
-      "replies":100,
-      "views":200,
-      "activity":"1h"
-    });
-    this.dataPostList.push({
-      "title":"bai 3",
-      "replies":100,
-      "views":200,
-      "activity":"1h"
-    });
+  async created() {
+    this.loading = true;
+    await axios.get(api.FULL_URL + "post/", {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then(
+        res => {
+          this.dataPostList = res.data;
+          this.loading = false;
+        }
+    )
   },
   methods: {
     changeOptionMenu() {
@@ -103,7 +112,22 @@ export default {
         this.menuGroupChoose = "top";
       }
 
-    }
+    },
+    async nextPage() {
+      this.loading = true;
+      await axios.get(api.FULL_URL + "post/", {params: {page: this.page}}).then(
+          res => {
+            if (res.status === 200) {
+              this.dataPostList = res.data;
+              this.loading = false;
+              // this.page = this.page
+            } else {
+              this.loading = false;
+              this.snackbar = true;
+            }
+          }
+      )
+    },
   }
 
 }
@@ -116,7 +140,12 @@ export default {
 .menu-option-main {
   margin-top: 1%;
 }
-.list-item-post{
+
+.list-item-post {
+  margin-top: 1%;
+  width: 100%;
+}
+.pagination{
   margin-top: 1%;
 }
 </style>
