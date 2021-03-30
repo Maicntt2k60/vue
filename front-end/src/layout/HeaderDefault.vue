@@ -62,7 +62,6 @@ export default {
       this.signUpOption.action = true;
     },
     jqueryExample() {
-
       console.log($('.item-post-list .title-object').text())
     }
   }
