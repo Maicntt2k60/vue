@@ -1,6 +1,8 @@
 package vn.utc.edu.nagabackend.api;
 
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.utc.edu.nagabackend.dto.PostDTO;
@@ -29,5 +31,11 @@ public class PostController {
             return ResponseEntity.ok().body(service.getAllByPage(page - 1));
         }
 
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<PostDTO> getOnePost(@PathVariable(name = "id") String id) {
+
+        return ResponseEntity.ok().body(service.getData(id));
     }
 }

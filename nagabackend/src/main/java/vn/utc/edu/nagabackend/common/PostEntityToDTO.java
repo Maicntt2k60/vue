@@ -41,6 +41,21 @@ public class PostEntityToDTO {
         dto.setSubjectDTO(SubjectEntityToDTO.entityToDTO(subjectEntity));
         dto.setHashTag(entity.getHashTag());
         return dto;
+    }
 
+    public static PostDTO PostEntityToDTO(PostEntity entity, SubjectEntity subjectEntity) {
+        PostDTO dto = new PostDTO();
+        dto.setID(entity.getID());
+        dto.setTitle(entity.getTitle());
+        dto.setSubjectDTO(SubjectEntityToDTO.entityToDTO(subjectEntity));
+        dto.setHashTag(entity.getHashTag());
+        PostDTO.ContentPostDTO contentPostDTO = new PostDTO.ContentPostDTO();
+        PostEntity.ContentPostEntity entityContent = entity.getContentPostEntityList().get(entity.getContentPostEntityList().size() - 1);
+        contentPostDTO.setContent(entityContent.getContent());
+        contentPostDTO.setDateCreate(entityContent.getDateCreate());
+        contentPostDTO.setCreateBy(entityContent.getCreateBy());
+        dto.setContentPostDTO(contentPostDTO);
+        dto.setUserCreate(entity.getUserOwn());
+        return dto;
     }
 }

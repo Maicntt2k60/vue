@@ -37,15 +37,16 @@ public class PostServiceImpl {
 
     }
 
-    public PostEntity getData(String id) {
-        return repository.findById(id).get();
+    public PostDTO getData(String id) {
+        PostEntity entity = repository.findById(id).get();
+        return PostEntityToDTO.PostEntityToDTO(entity, service.getOneEntity(entity.getSubjectId()));
 
     }
 
     public List<PostDTO> getAllByPage(Integer page) {
         Page<PostEntity> all = repository.findAll(PageRequest.of(page, 10));
         List<PostDTO> lists = new ArrayList<>();
-        for (PostEntity entity: all){
+        for (PostEntity entity : all) {
             SubjectEntity subjectEntity = service.getOneEntity(entity.getSubjectId());
             lists.add(PostEntityToDTO.shortPostEntityToDTO(entity, subjectEntity));
         }

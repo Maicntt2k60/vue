@@ -10,7 +10,7 @@
          border-bottom-width: thin;
           ">
       <v-col cols="9">
-        <a href="#">{{ dataItemPost.title }}</a>
+        <a :href="/post/+dataItemPost.id">{{ dataItemPost.title }}</a>
         <div class="content">
           <v-chip
               :color="dataItemPost.subjectDTO.color"

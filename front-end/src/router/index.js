@@ -21,8 +21,8 @@ const routes = [
     component: ()=>import('../views/Paramaster.vue')
   },
   {
-    path: '/post/',
-    name: 'Post Detail',
+    path: '/post/:id',
+    name: 'PostDetail',
     component: ()=>import('../views/PostDetail.vue')
   },
   {
