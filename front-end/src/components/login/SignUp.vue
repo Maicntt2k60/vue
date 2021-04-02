@@ -17,18 +17,28 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn depressed color="error" @click="registerEvent">Sign In</v-btn>
+          <v-btn depressed color="error" @click="registerEvent">Sign UP</v-btn>
           <v-btn depressed color="error">Cancel</v-btn>
         </v-card-actions>
       </v-card>
-      <v-btn depressed color="error" @click="loginEvent">Go to Login</v-btn>
+      <v-row>
+        <v-col cols="6" style="width: 100%">
+          <v-btn style="width: 100%" depressed color="error" @click="loginEvent">Go to Login</v-btn>
+        </v-col>
+        <v-col cols="6" style="width: 100%">
+          <v-btn style="width: 100%" depressed color="error" @click="openDatePicker">open</v-btn>
+        </v-col>
+      </v-row>
     </v-dialog>
+    <pick-date-birth :action-picker-date.sync="actionDatePicker"/>
   </div>
 </template>
 
 <script>
+import PickDateBirth from "@/components/login/PickDateBirth";
 export default {
   name: "SignUp",
+  components: {PickDateBirth},
   props: {
     openDialog: Object,
     closeDialog: Object
@@ -36,7 +46,11 @@ export default {
   data() {
     return {
       userName: '',
-      password: ''
+      password: '',
+      actionDatePicker:{
+        action:false,
+        value:""
+      }
     }
   },
   methods: {
@@ -46,10 +60,14 @@ export default {
     registerEvent() {
       console.log(this.userName);
       console.log(this.password);
+      console.log(this.actionDatePicker.value);
     },
-    loginEvent(){
+    loginEvent() {
       this.openDialog.action = false;
       this.closeDialog.action = true;
+    },
+    openDatePicker(){
+      this.actionDatePicker.action = true;
     }
   }
 }
