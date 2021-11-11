@@ -26,6 +26,11 @@ const routes = [
     component: ()=>import('../views/PostDetail.vue')
   },
   {
+    path:'/chat',
+    name: "ChatRoom",
+    component: ()=>import('../views/ChatRoom.vue')
+  },
+  {
     path: '*',
     name: 'Not Found',
     component: () =>import('../views/NotFound.vue')

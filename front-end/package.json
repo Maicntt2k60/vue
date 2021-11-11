@@ -19,7 +19,9 @@
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.2",
     "jquery": "^3.6.0",
-    "@tinymce/tinymce-vue": "^3.2.6"
+    "@tinymce/tinymce-vue": "^3.2.6",
+    "socket.io": "^4.0.1",
+    "vue-socket.io": "^3.0.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
